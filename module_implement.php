@@ -68,6 +68,192 @@ class portal implements s_portal{
 
 	        }
 
+	        public function updateCourse($id,$name,$code,$unit,$level,$coord){
+
+	        	$sql = "UPDATE courses SET coursename = '$name', coursecode = '$code', courseunit = '$unit', level = '$level', coordinator = '$coord' WHERE id = '$id' ";
+
+	        	$result = mysqli_query($this->db,$sql);
+		        	if ($result){
+		        		return true;
+		        	}else 
+		        	{
+		        		return false;
+		        	}
+	        }
+
+	        public function getID($table,$target,$code){
+
+	        	$sql = "SELECT id FROM $table WHERE $target = '$code'";
+	        	$result = mysqli_query($this->db,$sql);
+		        	if (mysqli_num_rows($result)>0){
+		        		return $result;
+		        	}else 
+		        	{
+		        		return false;
+		        	}
+	        }
+
+
+	        public function uploadCourses($name,$code,$unit,$level,$coord){
+
+	            $sql2="SELECT * from courses WHERE coursecode='$code' ";
+
+	 
+
+	            //checking if the coursecode is in existence on the table
+
+	            $result = mysqli_query($this->db,$sql2);
+
+	            $count_row = mysqli_num_rows($result);
+
+	 
+
+	            if ($count_row > 0) {
+
+
+	                return False;
+
+	            }
+
+	            else{
+
+
+		        	$sql =  "INSERT INTO courses ( coursename, coursecode, courseunit, level, coordinator) VALUES ('$name','$code','$unit','$level','$coord')";
+		        	$result = mysqli_query($this->db,$sql);
+		        	if ($result){
+		        		return true;
+		        	}else 
+		        	{
+		        		return false;
+		        	}
+	        	 }
+
+	        }
+
+	        public function addUsers($fname,$lname,$uemail,$urole,$password){
+
+	            $sql2="SELECT * from users WHERE email='$uemail' ";
+
+	 
+
+	            //checking if the email is in existence on the table
+
+	            $result = mysqli_query($this->db,$sql2);
+
+	            $count_row = mysqli_num_rows($result);
+
+	 
+
+	            if ($count_row > 0) {
+
+
+	                return False;
+
+	            }
+
+	            else{
+
+
+		        	$sql =  "INSERT INTO users (firstname, lastname, email, role, password) VALUES ('$fname','$lname','$uemail','$urole','$password')";
+		        	$result = mysqli_query($this->db,$sql);
+		        	if ($result){
+		        		return true;
+		        	}else 
+		        	{
+		        		return false;
+		        	}
+	        	 }
+
+	        }
+
+			public function updateUser($id,$fname,$lname,$uemail,$urole,$password){
+
+				$sql = "UPDATE users SET firstname = '$fname', lastname = '$lname', email = '$uemail', role = '$urole', password = '$password' where id = '$id' ";
+				$result = mysqli_query($this->db,$sql);
+		        	if ($result){
+		        		return true;
+		        	}else 
+		        	{
+		        		return false;
+		        	}
+			}
+	        public function deleteCourses($code){
+	        	$sql2="SELECT * from courses WHERE coursecode='$code' ";
+
+	 
+
+	            //checking if the coursecode is in existence on the table
+
+	            $result = mysqli_query($this->db,$sql2);
+
+	            $count_row = mysqli_num_rows($result);
+
+	 
+
+	            if ($count_row > 0) {
+	            	$sql = "DELETE FROM courses WHERE coursecode = '$code' ";
+		        	$result = mysqli_query($this->db,$sql);
+		        	if ($result){
+		        		return true;
+		        	}else 
+		        	{
+		        		return false;
+		        	}
+
+	                
+
+	            }
+
+	            else{
+
+		        	return False;
+		         }
+
+	        }
+	        public function deleteUsers($email){
+	        	$sql2="SELECT * from users WHERE email='$email' ";
+
+	 
+
+	            //checking if the coursecode is in existence on the table
+
+	            $result = mysqli_query($this->db,$sql2);
+
+	            $count_row = mysqli_num_rows($result);
+
+	 
+
+	            if ($count_row > 0) {
+	            	$sql = "DELETE FROM users WHERE email = '$email' ";
+		        	$result = mysqli_query($this->db,$sql);
+		        	if ($result){
+		        		return true;
+		        	}else 
+		        	{
+		        		return false;
+		        	}
+
+	                
+
+	            }
+
+	            else{
+
+		        	return False;
+		         }
+
+	        }
+
+	 public function getData($table){
+
+	 	$sql = "SELECT * FROM $table";
+	 	$result = mysqli_query($this->db,$sql);
+	 	if (mysqli_num_rows($result) > 0){
+	 		return $result;
+	 		}
+
+ 	}
+
 
 }
 

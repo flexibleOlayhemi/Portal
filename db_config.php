@@ -51,6 +51,8 @@ if ($conn->query($sql) === TRUE) {
 $sql = "CREATE TABLE IF NOT EXISTS courses (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 coursename VARCHAR(30) NOT NULL,
+coursecode VARCHAR(10) NOT NULL,
+courseunit INT(1) NOT NULL,
 level int(6) NOT NULL,
 coordinator VARCHAR(50)
 )";
