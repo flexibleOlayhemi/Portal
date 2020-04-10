@@ -27,17 +27,11 @@ if (isset($_POST['editcourse'])){
 	$unit = mysqli_real_escape_string($db->db,trim($_POST['cunit']));
 	$level = mysqli_real_escape_string($db->db,trim($_POST['clevel']));
 	$coord = mysqli_real_escape_string($db->db,trim($_POST['ccordinator']));
-	$res = $db->getID('courses','coursecode',$code);
-	if ($res){
-	$result = mysqli_fetch_assoc($res);
-	$id = $result['id'];
 	
-
-	$result = $db->updateCourse($id,$name,$code,$unit,$level,$coord);
+	$result = $db->updateCourse($name,$code,$unit,$level,$coord);
 
 	if ($result){
 		echo "Updated";
-	}
 	}
 	else {
 		echo "Error, ".$code." not exist ";
@@ -90,17 +84,10 @@ if (isset($_POST['edituser'])){
 	$uemail = mysqli_real_escape_string($db->db,trim($_POST['uemail']));
 	$urole = mysqli_real_escape_string($db->db,trim($_POST['urole']));
 	$password = mysqli_real_escape_string($db->db,trim($_POST['upassword']));
-	$res =  $db->getID('users','email',$uemail);
-	if($res){
-	$result = mysqli_fetch_assoc($res);
-	
-		$id = $result['id'];
-	echo $id;
 	$result = $db->updateUser($fname,$lname,$uemail,$urole,$password);
 
 	if ($result){
 		echo "Updated";
-	}
 	}
 	else {
 		echo "Error, ".$uemail." not exist ";

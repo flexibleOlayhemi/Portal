@@ -21,15 +21,15 @@ $db = new portal();
 	<form action="upload.php" method="post">
 		<div id="courses">
 			<span>Course Name</span>
-			<input type="text" name="cname">
+			<input type="text" name="cname" required>
 			<span>Course Code</span>
-			<input type="text" name="ccode">
+			<input type="text" name="ccode" required>
 			<span>Course unit</span>
-			<input type="number" name="cunit">
+			<input type="number" name="cunit" required>
 			<span>Level</span>
-			<input type="number" name="clevel">
+			<input type="number" name="clevel" required>
 			<span>Course Coordinator</span>
-			<input type="text" name="ccordinator">
+			<input type="text" name="ccordinator" required>
 			<button name="cupload" >Upload</button>
 			<button name="editcourse" >Update Course</button>
 
@@ -54,15 +54,15 @@ $db = new portal();
 		<div id="users">
 			<h1>Add/Edit user</h1>
 			<span>first name</span>
-			<input type="text" name="fname">
+			<input type="text" name="fname" required>
 			<span>last name</span>
-			<input type="text" name="lname">
+			<input type="text" name="lname" required>
 			<span>email</span>
-			<input type="email" name="uemail">
+			<input type="email" name="uemail" required>
 			<span>Role</span>
-			<input type="number" name="urole">
+			<input type="number" name="urole" required>
 			<span>User Password</span>
-			<input type="password" name="upassword">
+			<input type="password" name="upassword" required>
 			<button name="adduser">Add User</button>
 			<button name="edituser">Update User</button>
 

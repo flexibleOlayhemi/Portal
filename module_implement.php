@@ -68,9 +68,9 @@ class portal implements s_portal{
 
 	        }
 
-	        public function updateCourse($id,$name,$code,$unit,$level,$coord){
+	        public function updateCourse($name,$code,$unit,$level,$coord){
 
-	        	$sql = "UPDATE courses SET coursename = '$name', coursecode = '$code', courseunit = '$unit', level = '$level', coordinator = '$coord' WHERE id = '$id' ";
+	        	$sql = "UPDATE courses SET coursename = '$name', coursecode = '$code', courseunit = '$unit', level = '$level', coordinator = '$coord' WHERE coursecode = '$code' ";
 
 	        	$result = mysqli_query($this->db,$sql);
 		        	if ($result){
@@ -166,9 +166,9 @@ class portal implements s_portal{
 
 	        }
 
-			public function updateUser($id,$fname,$lname,$uemail,$urole,$password){
+			public function updateUser($fname,$lname,$uemail,$urole,$password){
 
-				$sql = "UPDATE users SET firstname = '$fname', lastname = '$lname', email = '$uemail', role = '$urole', password = '$password' where id = '$id' ";
+				$sql = "UPDATE users SET firstname = '$fname', lastname = '$lname', email = '$uemail', role = '$urole', password = '$password' where email = '$uemail' ";
 				$result = mysqli_query($this->db,$sql);
 		        	if ($result){
 		        		return true;
