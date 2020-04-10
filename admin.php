@@ -9,6 +9,12 @@ $db = new portal();
 <html>
 <head>
 	<title>Admin</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="main.js"></script>
 </head>
 <body>
 	<h1>Course upload/Edit</h1>
@@ -45,7 +51,7 @@ $db = new portal();
 	</form>
 	<hr>
 	<form  action="upload.php" method="post">
-		<div id="user">
+		<div id="users">
 			<h1>Add/Edit user</h1>
 			<span>first name</span>
 			<input type="text" name="fname">
@@ -75,7 +81,7 @@ $db = new portal();
 				<th>role</th>
 				<th>password</th>
 			</thead>
-			<tbody>
+			<tbody id="utbody">
 				<?php  
 						$result = $db->getData('users');
 						if($result){
@@ -88,7 +94,7 @@ $db = new portal();
 												<td data-id="<?php echo $rows['id']; ?>"><?php echo $rows['email']; ?></td>
 												<td data-id="<?php echo $rows['id']; ?>"><?php echo $rows['role']; ?></td>
 												<td data-id="<?php echo $rows['id']; ?>"><?php echo $rows['password']; ?></td>
-												<td><button><a href="#user">edit</a></button></td>
+												<td><a href="#users"><button class="ueditbtn" data-id="<?php echo $rows['id']; ?>">edit</button></a></td>
 											</tr>
 					
 									<?php 
@@ -111,7 +117,7 @@ $db = new portal();
 				<th>level</th>
 				<th>coordinator</th>
 			</thead>
-			<tbody>
+			<tbody id="ctbody">
 				
 					<?php 
 						$result = $db->getData('courses');
@@ -125,7 +131,7 @@ $db = new portal();
 												<td data-id="<?php echo $rows['id']; ?>"><?php echo $rows['courseunit']; ?></td>
 												<td data-id="<?php echo $rows['id']; ?>"><?php echo $rows['level']; ?></td>
 												<td data-id="<?php echo $rows['id']; ?>"><?php echo $rows['coordinator']; ?></td>
-												<td><button><a href="#courses">edit</a></button></td>
+												<td><a href="#courses"><button class="ceditbtn" data-id="<?php echo $rows['id']; ?>">edit</button></a></td>
 											</tr>
 					
 									<?php 
